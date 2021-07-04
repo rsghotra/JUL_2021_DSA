@@ -11,17 +11,17 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/BT/main.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/main"
+                "${workspaceFolder}/BT/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/main",
+            "command": "${workspaceFolder}/BT/main",
             "dependsOn":[
                 "build"
             ],
