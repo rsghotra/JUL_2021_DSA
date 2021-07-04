@@ -135,6 +135,7 @@ void BT::PostOrder_I(TreeNode* t) {
 void BT::LevelOrder() {
     queue<TreeNode*> q;
     TreeNode* temp = root;
+    if(temp == 0) return;
     cout << temp->data << " ";
     q.push(temp);
     while(!q.empty()) {
@@ -150,6 +151,5 @@ void BT::LevelOrder() {
         }
     }
 }
-
 
 #endif
