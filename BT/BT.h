@@ -82,56 +82,6 @@ void BT::PostOrder_R(TreeNode* ptr) {
     }
 }
 
-void BT::PreOrder_I(TreeNode* t) {
-    stack<TreeNode*> stk;
-    while(t != 0 || !stk.empty()) {
-        if(t != 0) {
-            cout << t->data << " ";
-            stk.push(t);
-            t = t->left;
-        } else {
-            t = stk.top();
-            stk.pop();
-            t = t->right;
-        }
-    }
-}
-
-void BT::InOrder_I(TreeNode* t) {
-    stack<TreeNode*> stk;
-    while(!stk.empty() || t != 0) {
-        if(t != 0) {
-            stk.push(t);
-            t = t->left;
-        } else {
-            t = stk.top(); stk.pop();
-            cout << t->data << " ";
-            t = t->right;
-        }
-    }
-}
-
-void BT::PostOrder_I(TreeNode* t) {
-    stack<long int> stk;
-    long int temp;
-    while(t != 0 || !stk.empty()) {
-        if(t != 0) {
-            stk.push((long int)t);
-            t = t->left;
-        } else {
-            temp = stk.top();
-            stk.pop();
-            if(temp > 0) {
-                stk.push(-temp);
-                t = ((TreeNode*)temp)->right;
-            } else {
-                cout << ((TreeNode*)(-1*temp))->data << " ";
-                t = 0;
-            }
-        }
-    }
-}
-
 void BT::LevelOrder() {
     queue<TreeNode*> q;
     TreeNode* temp = root;
@@ -152,4 +102,52 @@ void BT::LevelOrder() {
     }
 }
 
+void BT::PreOrder_I(TreeNode* t) {
+    stack<TreeNode*> stk;
+    while( t!= 0 || stk.empty() == false) {
+        if(t != 0 ) {
+            cout << t->data << " ";
+            stk.push(t);
+            t = t->left;
+        } else {
+            t = stk.top();
+            stk.pop();
+            t = t->right;
+        }
+    }
+}
+
+void BT::InOrder_I(TreeNode* t) {
+    stack<TreeNode*> stk;
+    while(t != 0 || stk.empty() == false) {
+        if(t != 0) {
+            stk.push(t);
+            t = t->left;
+        } else {
+            t = stk.top(); stk.pop();
+            cout << t->data << " ";
+            t = t->right;
+        }
+    }
+}
+
+void BT::PostOrder_I(TreeNode* t) {
+    stack<long int> stk;
+    long int temp;
+    while(t != 0 || stk.empty() == false) {
+        if(t != 0) {
+            stk.push((long int)t);
+            t = t->left;
+        } else {
+            temp = stk.top(); stk.pop();
+            if(temp > 0) {
+                stk.push(-temp);
+                t = ((TreeNode*)temp)->right;
+            } else {
+                cout << ((TreeNode*)(-1 * temp))->data << " ";
+                t = 0;
+            }
+        }
+    }
+}
 #endif
