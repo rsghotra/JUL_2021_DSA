@@ -30,6 +30,8 @@ class BT {
         void PreOrder_I(TreeNode* ptr);
         void PostOrder_I(TreeNode* ptr);
         void LevelOrder();
+        TreeNode* GenerateTreeFromInorderPreorder(vector<int>& preorder, vector<int>& inorder, int inorderStart, int inorderEnd);
+        int SearchInorder(vector<int>& inorder, int start, int end, int val);
 };
 
 void BT::create() {
@@ -150,4 +152,36 @@ void BT::PostOrder_I(TreeNode* t) {
         }
     }
 }
+
+int BT::SearchInorder(vector<int>& inorder, int start, int end, int data) {
+    for(int i = start; i <= end; i++) {
+        if(inorder[i] == data) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+TreeNode* BT::GenerateTreeFromInorderPreorder(vector<int>& preorder, vector<int>& inorder, int inorderStart, int inorderEnd) {
+    static int preIndex = 0;
+
+    //first exit condition
+    if(inorderStart > inorderEnd) {
+        return nullptr;
+    }
+
+    TreeNode* node = new TreeNode(preorder[preIndex]);
+    preIndex++;
+    if(inorderStart == inorderEnd) {
+        return node;
+    }
+
+    int splitIndex = SearchInorder(inorder, inorderStart, inorderEnd, node->data);
+    node->left = GenerateTreeFromInorderPreorder(preorder, inorder, inorderStart, splitIndex - 1);
+    node->right = GenerateTreeFromInorderPreorder(preorder, inorder, splitIndex+1, inorderEnd);
+    return node;
+}
+
+
 #endif
