@@ -32,6 +32,14 @@ class BT {
         void LevelOrder();
         TreeNode* GenerateTreeFromInorderPreorder(vector<int>& preorder, vector<int>& inorder, int inorderStart, int inorderEnd);
         int SearchInorder(vector<int>& inorder, int start, int end, int val);
+        int Height(TreeNode*);
+        int CountNodes(TreeNode*);
+        int CountDeg2(TreeNode*);
+        int CountDeg1(TreeNode*);
+        int CountDeg0(TreeNode*);
+        int Sum(TreeNode*);
+        int Height(TreeNode*);
+
 };
 
 void BT::create() {
@@ -183,5 +191,60 @@ TreeNode* BT::GenerateTreeFromInorderPreorder(vector<int>& preorder, vector<int>
     return node;
 }
 
+int BT::CountNodes(TreeNode* ptr) {
+    //post order form - most of the ques are solved in post order form.
+    int x, y;
+    if(ptr != 0) {
+        x = CountNodes(ptr->left);
+        y = CountNodes(ptr->right);
+        return x + y + 1;
+    }
+    return 0;
+}
+
+int BT::CountDeg2(TreeNode* ptr) {
+    int x, y;
+    if(ptr != 0) {
+        x = CountDeg2(ptr->left);
+        y = CountDeg2(ptr->right);
+        if(ptr->left && ptr->right) {
+            return x + y + 1;
+        } else {
+            return x + y;
+        }
+    } else {
+        return 0;
+    }
+}
+
+int BT::CountDeg0(TreeNode* ptr) {
+    int x, y;
+    if(ptr != 0) {
+        x = CountDeg0(ptr->left);
+        y = CountDeg0(ptr->right);
+        if(ptr->left == 0 && ptr->right == 0) {
+            return x + y + 1;
+        } else {
+            return x + y;
+        }
+    } else {
+        return 0;
+    }
+}
+
+int BT::CountDeg1(TreeNode* ptr) {
+    int x, y;
+    if(ptr != 0) {
+        x = CountDeg1(ptr->left);
+        y = CountDeg1(ptr->right);
+        if((ptr->left == 0 && ptr->right != 0) || (ptr->left != 0 && ptr->right == 0)) {
+            return x + y + 1;
+        } else {
+            return x + y;
+        }
+    } else {
+        return 0;
+    }
+}
 
 #endif
