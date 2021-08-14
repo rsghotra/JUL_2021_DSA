@@ -1,7 +1,7 @@
 #ifndef BT_H
 #define BT_H
 #include<string>
-
+using namespace std;
 class TreeNode {
 public:
     TreeNode* left;
@@ -22,19 +22,21 @@ private:
     int  CountNodes(TreeNode*);
     int  Sum(TreeNode*);
     int  Height(TreeNode*);
+    TreeNode* GenerateBTFromPreOrderAndInOrder(vector<int>&, vector<int>&, int, int);
 public:
     BinaryTree();
     void CreateTree();
     void CountNodes();
     void Sum();
-    int  Deg2Nodes();
-    int  Deg1Nodes();
+    void Deg2Nodes();
+    void Deg1Nodes();
     void  Height();
     void LevelOrder();
     void PreOrder();
     void InOrder();
     void PostOrder();
     int  NumberOfUniqueTreesGivenNodes(int);
+    void GenerateBTFromPreOrderAndInOrder(vector<int>&, vector<int>&);
 };
 
 #endif
