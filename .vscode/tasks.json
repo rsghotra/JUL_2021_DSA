@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/binary_tree/main.cpp",
-                "${workspaceFolder}/binary_tree/BT.cpp",
+                "${workspaceFolder}/binary_search_tree/main.cpp",
+                "${workspaceFolder}/binary_search_tree/bst.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/binary_tree/main"
+                "${workspaceFolder}/binary_search_tree/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/binary_tree/main",
+            "command": "${workspaceFolder}/binary_search_tree/main",
             "dependsOn":[
                 "build"
             ],
