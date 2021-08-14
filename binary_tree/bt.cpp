@@ -162,3 +162,26 @@ int BinaryTree::Height(TreeNode* ptr) {
         else return y+1;
     }
 }
+
+void BinaryTree::GenerateBTFromPreOrderAndInOrder(vector<int>& preorder, vector<int>& inorder) {
+    this->root = GenerateBTFromPreOrderAndInOrder(preorder, inorder, 0, inorder.size() - 1);
+}
+
+int BinaryTree::SearchInOrder(vector<int>& inorder, int start, int end, int key) {
+    for(int i = start; i <= end; i++) {
+        if(inorder[i] == key) return i;
+    }
+    return -1;
+}
+
+TreeNode* BinaryTree::GenerateBTFromPreOrderAndInOrder(vector<int>& preorder, vector<int>& inorder, int inStart, int inEnd) {
+    static int preIndex = 0;
+    if(inStart > inEnd) return nullptr;
+    TreeNode* root = new TreeNode(preorder[preIndex]);
+    preIndex++;
+    if(inStart == inEnd) return root;
+    int splitIndex = SearchInOrder(inorder, inStart, inEnd, root->data);
+    root->left = GenerateBTFromPreOrderAndInOrder(preorder, inorder, inStart, splitIndex-1);
+    root->right = GenerateBTFromPreOrderAndInOrder(preorder, inorder, splitIndex+1, inEnd);
+    return root;
+}
