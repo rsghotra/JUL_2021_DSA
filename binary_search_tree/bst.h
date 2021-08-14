@@ -1,6 +1,7 @@
 #ifndef BST_H
 #define BST_H
 #include<iostream>
+#include<vector>
 
 class TreeNode {
 public:
@@ -29,6 +30,7 @@ public:
     void InOrder();
     TreeNode* Insert(int);
     void Delete(int key);
+    void GenerateBSTFromPreOrder(std::vector<int>&);
 };
 
 #endif

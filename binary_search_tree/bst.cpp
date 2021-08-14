@@ -1,11 +1,13 @@
 #include "bst.h"
 #include<iostream>
 #include<stack>
+#include<vector>
 using namespace std;
 
 BST::BST() {
     this->root = 0;
 }
+
 TreeNode* BST::Insert(int key) {
     if(this->root == 0) {
         this->root = Insert(this->root, key);
@@ -107,6 +109,34 @@ TreeNode* BST::Delete(TreeNode* ptr, int key) {
         }
     }
 }
+
+void BST::GenerateBSTFromPreOrder(vector<int>& preorder) {
+    cout << "\n==>Generating BST from preorder only. Starting from left to right, iterative solution" << endl;
+    stack<TreeNode*> stk;
+    int i = 0;
+    //initial step of creating root
+    this->root = new TreeNode(preorder[i]);
+    TreeNode* ptr = this->root;
+    i++;
+    while(i < int(preorder.size())) {
+        if(preorder[i] < ptr->data) {
+            //add as left child;
+            ptr->left = new TreeNode(preorder[i]);
+            stk.push(ptr);
+            ptr = ptr->left;
+            i++;
+        } else if((preorder[i] > ptr->data) && (stk.empty() || stk.top()->data > preorder[i])) {
+            ptr->right = new TreeNode(preorder[i]);
+            ptr = ptr->right;
+            i++;
+            //do not push to stack
+        } else {
+            ptr = stk.top();stk.pop();
+            //do not increment i.
+        }
+    }
+}
+
 void BST::Height() {
     cout << "Height of the tree: " << Height(this->root) << endl;
 }
