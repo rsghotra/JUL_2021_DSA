@@ -16,8 +16,11 @@ int main() {
     bt->CountNodes();
     bt->Sum();
     bt->Height();
+    //questions below
     bt->GenerateBTFromPreOrderAndInOrder(preorder, inorder);
     cout << "New Tree: " << endl;
     bt->LevelOrderPattern();
+    bt->ReverseLevelOrderPattern();
+    bt->ZigZagTraversal();
     return 0;
 }

@@ -220,3 +220,79 @@ vector<vector<int>> BinaryTree::LevelOrderPattern(TreeNode* ptr) {
     }
     return result;
 }
+
+void BinaryTree::ReverseLevelOrderPattern() {
+    cout << "==>Printing Reverse Level Order Pattern" << endl;
+    deque<vector<int>> result = ReverseLevelOrderPattern(this->root);
+    for(auto vec: result) {
+        for(auto num: vec) {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+}
+
+deque<vector<int>> BinaryTree::ReverseLevelOrderPattern(TreeNode* ptr) {
+    deque<vector<int>> result;
+    if(ptr == 0) return result;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+    while(!queue.empty()) {
+        int levelSize = queue.size();
+        vector<int> currentLevel;
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front(); queue.pop();
+            currentLevel.push_back(node->data);
+            if(node->left) {
+                queue.push(node->left);
+            }
+            if(node->right) {
+                queue.push(node->right);
+            }
+        }
+        result.push_front(currentLevel);
+    }
+    return result;
+}
+
+void BinaryTree::ZigZagTraversal() {
+    cout << "==>Printing Zig-Zag Pattern" << endl;
+    vector<vector<int>> result = ZigZagTraversal(this->root);
+    for(auto vec: result) {
+        for(auto num: vec) {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+}
+
+vector<vector<int>> BinaryTree::ZigZagTraversal(TreeNode* ptr) {
+    vector<vector<int>> result;
+    bool leftToRight = true;
+    queue<TreeNode*> queue;
+    queue.push(this->root);
+
+    while(!queue.empty()) {
+        int levelSize = queue.size();
+        vector<int> currentLevel(levelSize);
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front();
+            queue.pop();
+            if(leftToRight) {
+                currentLevel[i] = node->data;
+            } else {
+                currentLevel[levelSize-i-1] = node->data;
+            }
+            if(node->left) {
+                queue.push(node->left);
+            }
+            if(node->right) {
+                queue.push(node->right);
+            }
+        }
+        result.push_back(currentLevel);
+        leftToRight = !leftToRight;
+    }
+    return result;
+}
+

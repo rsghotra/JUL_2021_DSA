@@ -2,6 +2,7 @@
 #define BT_H
 #include<string>
 #include<vector>
+#include<deque>
 using namespace std;
 class TreeNode {
 public:
@@ -25,6 +26,8 @@ private:
     int  Height(TreeNode*);
     TreeNode* GenerateBTFromPreOrderAndInOrder(vector<int>&, vector<int>&, int, int);
     vector<vector<int>> LevelOrderPattern(TreeNode*);
+    deque<vector<int>> ReverseLevelOrderPattern(TreeNode*);
+    vector<vector<int>> ZigZagTraversal(TreeNode*);
 public:
     BinaryTree();
     void CreateTree();
@@ -35,6 +38,8 @@ public:
     void Height();
     void LevelOrder();
     void LevelOrderPattern();
+    void ZigZagTraversal();
+    void ReverseLevelOrderPattern();
     void PreOrder();
     void InOrder();
     void PostOrder();
