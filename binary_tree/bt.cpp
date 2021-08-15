@@ -3,6 +3,7 @@
 #include<iostream>
 #include<queue>
 #include<stack>
+#include<vector>
 using namespace std;
 
 BinaryTree::BinaryTree() {
@@ -184,4 +185,38 @@ TreeNode* BinaryTree::GenerateBTFromPreOrderAndInOrder(vector<int>& preorder, ve
     root->left = GenerateBTFromPreOrderAndInOrder(preorder, inorder, inStart, splitIndex-1);
     root->right = GenerateBTFromPreOrderAndInOrder(preorder, inorder, splitIndex+1, inEnd);
     return root;
+}
+
+void BinaryTree::LevelOrderPattern() {
+    cout << "==>Printing Levels in array" << endl;
+    vector<vector<int>> result = LevelOrderPattern(this->root);
+    for(auto vec: result) {
+        for(auto num: vec) {
+            cout << num << " ";
+        }
+        cout << endl;
+    }
+}
+
+vector<vector<int>> BinaryTree::LevelOrderPattern(TreeNode* ptr) {
+    vector<vector<int>> result;
+    if(ptr == 0) return result;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+    while(!queue.empty()) {
+        int levelSize = queue.size();
+        vector<int> level;
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front(); queue.pop();
+            level.push_back(node->data);
+            if(node->left) {
+                queue.push(node->left);
+            }
+            if(node->right) {
+                queue.push(node->right);
+            }
+        }
+        result.push_back(level);
+    }
+    return result;
 }

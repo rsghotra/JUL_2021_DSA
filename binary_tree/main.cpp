@@ -18,7 +18,6 @@ int main() {
     bt->Height();
     bt->GenerateBTFromPreOrderAndInOrder(preorder, inorder);
     cout << "New Tree: " << endl;
-    bt->LevelOrder();
-    bt->PreOrder();
+    bt->LevelOrderPattern();
     return 0;
 }

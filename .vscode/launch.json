@@ -9,7 +9,7 @@
              "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/avl_tree/main.exe",
+            "program": "${workspaceFolder}/binary_tree/main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

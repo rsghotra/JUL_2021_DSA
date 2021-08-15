@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/avl_tree/main.cpp",
-                "${workspaceFolder}/avl_tree/avl.cpp",
+                "${workspaceFolder}/binary_tree/main.cpp",
+                "${workspaceFolder}/binary_tree/bt.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/avl_tree/main"
+                "${workspaceFolder}/binary_tree/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/avl_tree/main",
+            "command": "${workspaceFolder}/binary_tree/main",
             "dependsOn":[
                 "build"
             ],

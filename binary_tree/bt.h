@@ -24,6 +24,7 @@ private:
     int  Sum(TreeNode*);
     int  Height(TreeNode*);
     TreeNode* GenerateBTFromPreOrderAndInOrder(vector<int>&, vector<int>&, int, int);
+    vector<vector<int>> LevelOrderPattern(TreeNode*);
 public:
     BinaryTree();
     void CreateTree();
@@ -33,6 +34,7 @@ public:
     void Deg1Nodes();
     void Height();
     void LevelOrder();
+    void LevelOrderPattern();
     void PreOrder();
     void InOrder();
     void PostOrder();
