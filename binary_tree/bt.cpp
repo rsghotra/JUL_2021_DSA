@@ -296,3 +296,34 @@ vector<vector<int>> BinaryTree::ZigZagTraversal(TreeNode* ptr) {
     return result;
 }
 
+void BinaryTree::LevelAverage() {
+    cout << "==>Printing LevelAverage" << endl;
+    vector<double> result = LevelAverage(this->root);
+    for(auto num: result) {
+        cout << num << " ";
+    }
+    cout << endl;
+}
+
+vector<double> BinaryTree::LevelAverage(TreeNode* ptr) {
+    vector<double> result;
+    if(ptr == 0) return result;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+    while(!queue.empty()) {
+        int levelSize = queue.size();
+        int levelSum = 0;
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front(); queue.pop();
+            levelSum += node->data;
+            if(node->left) {
+                queue.push(node->left);
+            }
+            if(node->right) {
+                queue.push(node->right);
+            }
+        }
+        result.push_back((1.0*levelSum)/levelSize);
+    }
+    return result;
+}
