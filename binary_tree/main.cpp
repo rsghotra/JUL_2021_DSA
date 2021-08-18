@@ -23,5 +23,7 @@ int main() {
     bt->ReverseLevelOrderPattern();
     bt->ZigZagTraversal();
     bt->LevelAverage();
+    bt->MinDepth();
+    bt->LevelOrderSuccessor(1);
     return 0;
 }

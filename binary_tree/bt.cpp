@@ -327,3 +327,49 @@ vector<double> BinaryTree::LevelAverage(TreeNode* ptr) {
     }
     return result;
 }
+
+void BinaryTree::MinDepth() {
+    cout << "Min depth of the tree " << MinDepth(this->root) << endl;
+}
+
+int BinaryTree::MinDepth(TreeNode* ptr) {
+    int minDepth = 0;
+    if(ptr == 0) return 0;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+    while(queue.empty() == false) {
+        minDepth++;
+        int levelSize = queue.size();
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front();
+            queue.pop();
+            if(node->left == 0 && node->right == 0) return minDepth;
+            if(node->left) queue.push(node->left);
+            if(node->right) queue.push(node->right);
+        }
+    }
+    return minDepth;
+}
+
+void BinaryTree::LevelOrderSuccessor(int key) {
+    TreeNode* ptr = this->root;
+    if(ptr == 0) return;
+    queue<TreeNode*> queue;
+    queue.emplace(ptr);
+
+    while(queue.empty() == false) {
+        ptr = queue.front();
+        queue.pop();
+        if(ptr->left) {
+            queue.push(ptr->left);
+        }
+        if(ptr->right) {
+            queue.push(ptr->right);
+        }
+        if(ptr->data == key) {
+            cout << "Level Order Successor: " << queue.front()->data << endl;
+            return;
+        }
+    }
+    cout << "No Level Order Successor Found" << endl;
+}

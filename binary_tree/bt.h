@@ -29,6 +29,8 @@ private:
     deque<vector<int>> ReverseLevelOrderPattern(TreeNode*);
     vector<vector<int>> ZigZagTraversal(TreeNode*);
     vector<double> LevelAverage(TreeNode*);
+    int MinDepth(TreeNode*);
+    TreeNode* LevelOrderSuccessor(TreeNode*);
 public:
     BinaryTree();
     void CreateTree();
@@ -48,6 +50,8 @@ public:
     void GenerateBTFromPreOrderAndInOrder(vector<int>&, vector<int>&);
     int  SearchInOrder(vector<int>& inorder, int start, int end, int key);
     void LevelAverage();
+    void MinDepth();
+    void LevelOrderSuccessor(int);
 };
 
 #endif
