@@ -16,7 +16,6 @@ int main() {
     bt->CountNodes();
     bt->Sum();
     bt->Height();
-    //questions below
     bt->GenerateBTFromPreOrderAndInOrder(preorder, inorder);
     cout << "New Tree: " << endl;
     bt->LevelOrderPattern();
@@ -25,5 +24,8 @@ int main() {
     bt->LevelAverage();
     bt->MinDepth();
     bt->LevelOrderSuccessor(1);
+    bt->ConnectLevelOrderSiblings();
+    bt->ConnectLevelOrderSiblingsToNextLevel();
+    bt->RightView();
     return 0;
 }

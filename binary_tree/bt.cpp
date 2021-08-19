@@ -373,3 +373,66 @@ void BinaryTree::LevelOrderSuccessor(int key) {
     }
     cout << "No Level Order Successor Found" << endl;
 }
+
+void BinaryTree::ConnectLevelOrderSiblings() {
+    if(this->root == 0) return;
+    TreeNode* ptr = this->root;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+
+    while(queue.empty() == false) {
+        int levelSize = queue.size();
+        TreeNode* previous = 0;
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front();
+            queue.pop();
+            if(previous != 0) {
+                previous->next = node;
+            }
+            previous = node;
+            if(node->left) queue.push(node->left);
+            if(node->right) queue.push(node->right);
+        }
+    }
+}
+
+void BinaryTree::ConnectLevelOrderSiblingsToNextLevel() {
+    if(this->root == 0) return;
+    TreeNode* ptr = this->root;
+    queue<TreeNode*> queue;
+    queue.push(this->root);
+
+    TreeNode* previous = 0;
+    //no level division is needed
+    while(queue.empty() == false) {
+        ptr = queue.front();
+        queue.pop();
+        if(previous != nullptr) {
+            previous->next = ptr;
+        }
+        previous = ptr;
+        if(ptr->left) queue.push(ptr->left);
+        if(ptr->right) queue.push(ptr->right);
+    }
+}
+
+void BinaryTree::RightView() {
+    if(this->root == 0) return;
+    TreeNode* ptr = this->root;
+    queue<TreeNode*> queue;
+    queue.push(ptr);
+    cout << "Right view of the BT: " << endl;
+    while(queue.empty() == false) {
+        int levelSize = queue.size();
+        for(int i = 0; i < levelSize; i++) {
+            TreeNode* node = queue.front();
+            queue.pop();
+            if(i == levelSize - 1) {
+                cout << node->data << " ";
+            }
+            if(node->left) queue.push(node->left);
+            if(node->right) queue.push(node->right);
+        }
+    }
+    cout << endl;
+}

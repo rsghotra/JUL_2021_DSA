@@ -8,10 +8,12 @@ class TreeNode {
 public:
     TreeNode* left;
     TreeNode* right;
+    TreeNode* next;
     int data;
     TreeNode(int data) {
         this->data = data;
         this->left = this->right = 0;
+        this->next = 0;
     }
 };
 
@@ -52,6 +54,9 @@ public:
     void LevelAverage();
     void MinDepth();
     void LevelOrderSuccessor(int);
+    void ConnectLevelOrderSiblings();
+    void ConnectLevelOrderSiblingsToNextLevel();
+    void RightView();
 };
 
 #endif
