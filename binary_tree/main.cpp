@@ -16,8 +16,13 @@ int main() {
     bt->CountNodes();
     bt->Sum();
     bt->Height();
+    bt->HasPath();
+    bt->AllPathsForSum();
+    bt->AllPaths();
+    bt->SumOfPathNumbers();
+    bt->FindIfSequencePathExists();
+    bt->CountNonRootedPathsForSum();
     bt->GenerateBTFromPreOrderAndInOrder(preorder, inorder);
-    cout << "New Tree: " << endl;
     bt->LevelOrderPattern();
     bt->ReverseLevelOrderPattern();
     bt->ZigZagTraversal();
@@ -27,5 +32,6 @@ int main() {
     bt->ConnectLevelOrderSiblings();
     bt->ConnectLevelOrderSiblingsToNextLevel();
     bt->RightView();
+    bt->Diameter();
     return 0;
 }

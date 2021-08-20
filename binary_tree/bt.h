@@ -33,6 +33,13 @@ private:
     vector<double> LevelAverage(TreeNode*);
     int MinDepth(TreeNode*);
     TreeNode* LevelOrderSuccessor(TreeNode*);
+    bool HasPath(TreeNode*, int);
+    void AllPathsForSum(TreeNode*, int, vector<int>&, vector<vector<int>>&);
+    void AllPaths(TreeNode*, vector<int>&, vector<vector<int>>&);
+    int SumOfPathNumbers(TreeNode*, int pathSum);
+    bool FindIfSequencePathExists(TreeNode*, vector<int>&, unsigned int);
+    int CountNonRootedPathsForSum(TreeNode*, vector<int>&, int);
+    int Diameter(TreeNode*);
 public:
     BinaryTree();
     void CreateTree();
@@ -57,6 +64,13 @@ public:
     void ConnectLevelOrderSiblings();
     void ConnectLevelOrderSiblingsToNextLevel();
     void RightView();
+    void HasPath(); //T = o(n); S = o(n)
+    void AllPathsForSum();
+    void AllPaths();
+    void SumOfPathNumbers();
+    void FindIfSequencePathExists();
+    void CountNonRootedPathsForSum();
+    void Diameter();
 };
 
 #endif
