@@ -11,18 +11,17 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/binary_tree/main.cpp",
-                "${workspaceFolder}/binary_tree/bt.cpp",
+                "${workspaceFolder}/Hashing_Chaining/main.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/binary_tree/main"
+                "${workspaceFolder}/Hashing_Chaining/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/binary_tree/main",
+            "command": "${workspaceFolder}/Hashing_Chaining/main",
             "dependsOn":[
                 "build"
             ],
