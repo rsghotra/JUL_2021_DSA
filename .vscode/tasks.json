@@ -11,17 +11,17 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/Heap/main.cpp",
+                "${workspaceFolder}/Fast_Slow_Ptrn/main.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/Heap/main"
+                "${workspaceFolder}/Fast_Slow_Ptrn/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/Heap/main",
+            "command": "${workspaceFolder}/Fast_Slow_Ptrn/main",
             "dependsOn":[
                 "build"
             ],
