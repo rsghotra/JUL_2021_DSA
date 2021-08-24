@@ -1,0 +1,2 @@
+language = "c++"
+run = "g++ -o Heap/main Heap/main.cpp && cd Heap && ./main"
