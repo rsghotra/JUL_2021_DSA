@@ -10,7 +10,9 @@ struct ListNode {
 	}
 };
 
+ListNode* DetectCycleStart(ListNode*);
 int CalculateLength(ListNode*);
+int CycleLength(ListNode* head);
 
 bool HasCycle(ListNode *head) {
 	ListNode *slow = head;
@@ -26,6 +28,24 @@ bool HasCycle(ListNode *head) {
 			return true;
 	}
 	return false;
+}
+
+ListNode* DetectCycleStart(ListNode* slow) {
+  int length = CycleLength(slow);
+  if(length != -1) {
+    ListNode* ptr1 = slow;
+    ListNode* ptr2 = slow;
+    while(length > 0) {
+      length--;
+      ptr1 = ptr1->next;
+    }
+    while(ptr1 != ptr2) {
+      ptr1 = ptr1->next;
+      ptr2 = ptr2->next;
+    }
+    return ptr1;
+  }
+  return nullptr;
 }
 
 int CycleLength(ListNode* head) {
@@ -80,5 +100,9 @@ int main() {
   } else {
     cout << "Cycle of length of " << cycleLen << " detected." << endl;
   }
+
+  ListNode* startPoint = DetectCycleStart(head);
+  cout << "The starting node is: " << startPoint->data << endl;
+
   return 0;
 }
