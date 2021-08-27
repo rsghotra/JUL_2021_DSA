@@ -11,17 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/Fast_Slow_Ptrn/main.cpp",
+                "${workspaceFolder}/Modified_Binary_Search/main.cpp",
+                "${workspaceFolder}/Modified_Binary_Search/MBSearch.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/Fast_Slow_Ptrn/main"
+                "${workspaceFolder}/Modified_Binary_Search/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/Fast_Slow_Ptrn/main",
+            "command": "${workspaceFolder}/Modified_Binary_Search/main",
             "dependsOn":[
                 "build"
             ],
