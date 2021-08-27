@@ -15,5 +15,17 @@ int main() {
   cout << MBSearch::FindFloor(vector<int>{1, 3, 8, 10, 15}, 12) << endl;
   cout << MBSearch::FindFloor(vector<int>{4, 6, 10}, 17) << endl;
   cout << MBSearch::FindFloor(vector<int>{4, 6, 10}, -1) << endl;
+
+  cout << MBSearch::NextLetter(vector<char>{'a', 'c', 'f', 'h'}, 'f') << endl;
+  cout << MBSearch::NextLetter(vector<char>{'a', 'c', 'f', 'h'}, 'b') << endl;
+  cout << MBSearch::NextLetter(vector<char>{'a', 'c', 'f', 'h'}, 'm') << endl;
+  cout << MBSearch::NextLetter(vector<char>{'a', 'c', 'f', 'h'}, 'h') << endl;
+
+  pair<int, int> result = MBSearch::NumberRange(vector<int>{4, 6, 6, 6, 9}, 6);
+  cout << "Range: [" << result.first << ", " << result.second << "]" << endl;
+  result = MBSearch::NumberRange(vector<int>{1, 3, 8, 10, 15}, 10);
+  cout << "Range: [" << result.first << ", " << result.second << "]" << endl;
+  result = MBSearch::NumberRange(vector<int>{1, 3, 8, 10, 15}, 12);
+  cout << "Range: [" << result.first << ", " << result.second << "]" << endl;
   return 0;
 }
