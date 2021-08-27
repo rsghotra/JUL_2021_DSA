@@ -27,5 +27,19 @@ int main() {
   cout << "Range: [" << result.first << ", " << result.second << "]" << endl;
   result = MBSearch::NumberRange(vector<int>{1, 3, 8, 10, 15}, 12);
   cout << "Range: [" << result.first << ", " << result.second << "]" << endl;
+
+  ArrayReader *reader =
+      new ArrayReader(vector<int>{4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30});
+  cout << MBSearch::SearchInfinite(reader, 16) << endl;
+  cout << MBSearch::SearchInfinite(reader, 11) << endl;
+  reader = new ArrayReader(vector<int>{1, 3, 8, 10, 15});
+  cout << MBSearch::SearchInfinite(reader, 15) << endl;
+  cout << MBSearch::SearchInfinite(reader, 200) << endl;
+  delete reader;
+  cout << "Min diff ele" << endl;
+  cout << MBSearch::MinimumDifferenceEle(vector<int>{4, 6, 10}, 7) << endl;
+  cout << MBSearch::MinimumDifferenceEle(vector<int>{4, 6, 10}, 4) << endl;
+  cout << MBSearch::MinimumDifferenceEle(vector<int>{1, 3, 8, 10, 15}, 12) << endl;
+  cout << MBSearch::MinimumDifferenceEle(vector<int>{4, 6, 10}, 17) << endl;
   return 0;
 }
