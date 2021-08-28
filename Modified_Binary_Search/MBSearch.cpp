@@ -176,3 +176,168 @@ int MBSearch::MinimumDifferenceEle(const vector<int>& arr, int key) {
     } 
     return arr[end];
 }
+
+int MBSearch::FindMaxInBitonicArray(const vector<int>& arr) {
+    int start = 0;
+    int end = arr.size()-1;
+
+    while(start < end) {
+        int mid = start + (end-start)/2;
+        if(arr[mid] > arr[mid+1]) {
+            end = mid;
+        } else {
+            //peak must be after mid
+            start = mid+1;
+        }
+    }
+    return arr[start];
+}
+
+int MBSearch::FindMaxIndexBitonicArray(const vector<int>& arr) {
+    int start = 0;
+    int end = arr.size()-1;
+
+    while(start < end) {
+        int mid = start + (end-start)/2;
+        if(arr[mid] > arr[mid+1]) {
+            end = mid;
+        } else {
+            //peak must be after mid
+            start = mid+1;
+        }
+    }
+    return start;
+}
+
+int MBSearch::OrderAgnostic(const vector<int>& arr, int key, int start, int end, bool ascending) {
+    while(start <= end) {
+        int mid = start + (end-start)/2;
+        if(ascending) {
+            if(key < arr[mid]) {
+                end = mid-1;
+            } else if(key > arr[mid]) {
+                start = mid+1;
+            } else {
+                return mid;
+            }
+        } else {
+            if(key < arr[mid]) {
+                start = mid+1;
+            } else if(key > arr[mid]) {
+                end = mid-1;
+            } else {
+                return mid;
+            }
+        }
+    }
+    return -1;
+}
+
+int MBSearch::SearchBitonicArray(const vector<int>& arr, int key) {
+    int maxIndex = FindMaxIndexBitonicArray(arr);
+    int keyIndex = OrderAgnostic(arr, key, 0, maxIndex, true);
+    if(keyIndex != -1) return keyIndex;
+    return OrderAgnostic(arr, key, maxIndex+1, arr.size()-1, false);
+}
+
+int MBSearch::SearchRotatedArray(const vector<int>& arr, int key) {
+    int start = 0;
+    int end = arr.size() -1;
+    while(start <= end) {
+        int mid = start + (end-start)/2;
+        if(arr[mid] == key) return mid;
+        //find out which side is sorted, left side sorted
+        if(arr[start] <= arr[mid]) {
+            //check where value exists
+            if(key >= arr[start] && key < arr[mid]) {
+                end = mid-1;
+            } else {
+                start = mid+1;
+            }
+        } else {
+            if(key > arr[mid] && key <= arr[end]) {
+                start = mid+1;
+            } else {
+                end = mid-1;
+            }
+        }
+    }
+    return -1;
+}
+
+int MBSearch::SearchRotatedWithDuplicate(const vector<int>& arr, int key) {
+    int start = 0, end = arr.size()-1;
+    while(start <= end) {
+        int mid = start + (end-start)/2;
+        if(arr[mid] == key) return mid;
+        if((arr[start] == arr[mid]) && (arr[mid] == arr[end])) {
+            ++start;
+            --end;
+        } else if(arr[start] <= arr[mid]) {
+            if(key >= arr[start] && key < arr[mid]) {
+                end = mid-1;
+            } else {
+                start = mid+1;
+            }
+        } else {
+            if(key > arr[mid] && key <= arr[end]) {
+                start = mid+1;
+            } else {
+                end = mid-1;
+            }
+        }
+    }
+    return -1;
+}
+
+int MBSearch::RotationCountOfRotatedArray(const vector<int>& arr) {
+    int start = 0;
+    int end = arr.size() -1;
+    while(start <= end) {
+        int mid = start + (end-start)/2;
+        //if mid is greater than the next element
+        if(mid < end && arr[mid] > arr[mid+1]) {
+            return mid+1;
+        }
+        //if mid is smaller than the previous element
+        if(mid > start && arr[mid-1] > arr[mid]) {
+            return mid;
+        }
+        //split call;
+        if(arr[start] < arr[mid]) {
+            start = mid+1;
+        } else {
+            end = mid-1;
+        }
+    }
+    return 0;
+}
+
+int MBSearch::RotationCountWithDuplicates(const vector<int>& arr) {
+    int start = 0;
+    int end = arr.size()-1;
+    while(start <= end) {
+        int mid = start + (end-start)/2;
+        if(mid < end && arr[mid] > arr[mid+1]) {
+            return mid+1;
+        }
+        if(mid > start && arr[mid-1] > arr[mid]) {
+            return mid;
+        }
+        if(arr[start] == arr[mid] && (arr[mid] == arr[end])) {
+            if(arr[start] > arr[start+1]) {
+                return start+1;
+            }
+            start++;
+            if(arr[end] < arr[end-1]) {
+                return end;
+            }
+            end--;
+        } else if(arr[start] < arr[mid] || ((arr[start] == arr[mid]) && (arr[mid] > arr[end]))) {
+            start = mid+1;
+        } else {
+            end = mid-1;
+        }
+    }
+    return 0;
+}
