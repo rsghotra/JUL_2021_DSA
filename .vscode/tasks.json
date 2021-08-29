@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/Modified_Binary_Search/main.cpp",
-                "${workspaceFolder}/Modified_Binary_Search/MBSearch.cpp",
+                "${workspaceFolder}/XOR/main.cpp",
+                "${workspaceFolder}/XOR/XOR.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/Modified_Binary_Search/main"
+                "${workspaceFolder}/XOR/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/Modified_Binary_Search/main",
+            "command": "${workspaceFolder}/XOR/main",
             "dependsOn":[
                 "build"
             ],

@@ -9,7 +9,7 @@
              "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Modified_Binary_Search/main.exe",
+            "program": "${workspaceFolder}/XOR/main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
