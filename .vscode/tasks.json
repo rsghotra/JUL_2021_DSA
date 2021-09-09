@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/XOR/main.cpp",
-                "${workspaceFolder}/XOR/XOR.cpp",
+                "${workspaceFolder}/SlidingWindow/main.cpp",
+                "${workspaceFolder}/SlidingWindow/SlidingWindow.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/XOR/main"
+                "${workspaceFolder}/SlidingWindow/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/XOR/main",
+            "command": "${workspaceFolder}/SlidingWindow/main",
             "dependsOn":[
                 "build"
             ],
