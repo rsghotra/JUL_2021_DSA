@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/SlidingWindow/main.cpp",
-                "${workspaceFolder}/SlidingWindow/SlidingWindow.cpp",
+                "${workspaceFolder}/TwoPointers/main.cpp",
+                "${workspaceFolder}/TwoPointers/TwoPointers.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/SlidingWindow/main"
+                "${workspaceFolder}/TwoPointers/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/SlidingWindow/main",
+            "command": "${workspaceFolder}/TwoPointers/main",
             "dependsOn":[
                 "build"
             ],
