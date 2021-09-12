@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/Subsets/main.cpp",
-                "${workspaceFolder}/Subsets/Subsets.cpp",
+                "${workspaceFolder}/MergeKSorted/main.cpp",
+                "${workspaceFolder}/MergeKSorted/MergeKSorted.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/Subsets/main"
+                "${workspaceFolder}/MergeKSorted/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/Subsets/main",
+            "command": "${workspaceFolder}/MergeKSorted/main",
             "dependsOn":[
                 "build"
             ],

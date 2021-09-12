@@ -9,7 +9,7 @@
              "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/Subsets/main.exe",
+            "program": "${workspaceFolder}/MergeKSorted/main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
