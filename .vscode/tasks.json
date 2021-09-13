@@ -11,18 +11,18 @@
                 "-Wall",
                 "-std=c++17",
                 "-g",
-                "${workspaceFolder}/tests/main.cpp",
-                "${workspaceFolder}/tests/Test1.cpp",
+                "${workspaceFolder}/Graphs/main.cpp",
+                "${workspaceFolder}/Graphs/Topological.cpp",
                 "-pthread",
                 "-o",
-                "${workspaceFolder}/tests/main"
+                "${workspaceFolder}/Graphs/main"
             ],
             "problemMatcher":[]
         },
         {
             "label": "run",
             "type":  "shell",
-            "command": "${workspaceFolder}/tests/main",
+            "command": "${workspaceFolder}/Graphs/main",
             "dependsOn":[
                 "build"
             ],
