@@ -43,6 +43,7 @@ vector<vector<int>> Subsets::SubsetsWithDuplicates(vector<int>& nums) {
 	int startIndex = 0;
 	int endIndex = 0;
 	for(size_t i = 0; i < nums.size(); i++) {
+		startIndex = 0;
 		if(i > 0 && nums[i-1] == nums[i]) {
 			startIndex = endIndex+1;
 		}
@@ -81,7 +82,7 @@ void Subsets::SubsetsWithDuplicates() {
 vector<vector<int>> Subsets::Permutations(const vector<int>& nums) {
 	vector<vector<int>> result;
 	queue<vector<int>> queue;
-	result.push_back(vector<int>{});
+	queue.push(vector<int>{});
 
 	for(size_t i = 0; i < nums.size(); i++) {
 		for(size_t j = 0; j < queue.size(); j++) {

@@ -172,7 +172,6 @@ bool SlidingWindow::PermutationExists(const string& str, const string& pattern) 
 	}
 	int windowStart = 0;
 	int matchCount = 0;
-	vector<int> result;
 	for(int windowEnd = 0; windowEnd < int(str.size()); windowEnd++) {
 		if(frequencies.find(str[windowEnd]) != frequencies.end()) {
 			frequencies[str[windowEnd]]--;
@@ -183,7 +182,7 @@ bool SlidingWindow::PermutationExists(const string& str, const string& pattern) 
 		if(matchCount == (int)frequencies.size()) {
 			return true;
 		}
-		if(windowEnd - windowStart + 1 >= int(pattern.length())) {
+		if(windowEnd - windowStart + 1 == int(pattern.length())) {
 			if(frequencies.find(str[windowStart]) != frequencies.end()) {
 				if(frequencies[str[windowStart]] == 0) {
 					matchCount--;
@@ -254,7 +253,7 @@ vector<int> SlidingWindow::StringAnagrams(const string& str, const string& patte
 		if(matchCount == (int)frequencies.size()) {
 			result.push_back(windowStart);
 		}
-		if(windowEnd - windowStart + 1 >= int(pattern.length())) {
+		if(windowEnd - windowStart + 1 == int(pattern.length())) {
 			if(frequencies.find(str[windowStart]) != frequencies.end()) {
 				if(frequencies[str[windowStart]] == 0) {
 					matchCount--;
